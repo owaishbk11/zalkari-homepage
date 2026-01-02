@@ -3,18 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalkari | Premium Silver Jewelry</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Swarovski Style Animated Header</title>
     <style>
-        /* ===== SWAROVSKI-INSPIRED DESIGN ===== */
-        :root {
-            --primary: #930190;
-            --text: #000000;
-            --background: #ffffff;
-            --light-gray: #f8f8f8;
-            --border: #eaeaea;
-        }
-        
+        /* ===== BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
@@ -23,75 +14,70 @@
         
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: var(--text);
-            background: var(--background);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background: #fff;
+            color: #000;
+            min-height: 200vh; /* For scrolling demo */
         }
         
-        /* ===== SWAROVSKI TYPOGRAPHY ===== */
-        h1, h2, h3, h4, .logo {
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
+        /* ===== SWAROVSKI ANIMATED HEADER ===== */
+        .swarovski-header {
+            position: fixed;
+            top: 0;
             left: 0;
-            width: 60px;
-            height: 1px;
-            background: var(--primary);
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
         
-        h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+        /* Header States */
+        .swarovski-header.scrolled {
+            transform: translateY(-40px);
+            opacity: 0.95;
         }
         
-        p {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 1.5rem;
+        .swarovski-header.scrolled .main-nav {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
         }
         
-        /* ===== HEADER - SWAROVSKI STYLE ===== */
-        .announcement-bar {
-            background: var(--light-gray);
+        .swarovski-header.scrolled .logo-container,
+        .swarovski-header.scrolled .header-actions {
+            transform: translateY(40px);
+        }
+        
+        /* ===== TOP PROMO BAR ===== */
+        .promo-bar {
+            background: #000;
+            color: #fff;
             text-align: center;
             padding: 10px 0;
             font-size: 0.85rem;
             letter-spacing: 1px;
-            border-bottom: 1px solid var(--border);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
         
-        .announcement-bar strong {
-            color: var(--primary);
+        .promo-text {
+            animation: fadeInUp 0.6s ease;
         }
         
-        .main-header {
-            padding: 25px 0;
-            position: sticky;
-            top: 0;
-            background: var(--background);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
+        .promo-bar strong {
+            font-weight: 600;
+            margin: 0 5px;
+        }
+        
+        /* ===== MAIN HEADER CONTENT ===== */
+        .header-main {
+            padding: 15px 0;
+            transition: padding 0.3s ease;
         }
         
         .header-container {
@@ -99,405 +85,385 @@
             margin: 0 auto;
             padding: 0 40px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+        }
+        
+        .swarovski-header.scrolled .header-main {
+            padding: 8px 0;
+        }
+        
+        /* ===== LOGO ===== */
+        .logo-container {
+            transition: transform 0.4s ease;
         }
         
         .logo {
             font-size: 1.8rem;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             font-weight: 300;
-        }
-        
-        .logo span {
-            color: var(--primary);
-        }
-        
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-        
-        .main-nav a {
+            text-transform: uppercase;
+            color: #000;
             text-decoration: none;
-            color: var(--text);
-            font-size: 0.9rem;
-            letter-spacing: 1.5px;
-            transition: color 0.3s;
+            display: block;
             position: relative;
         }
         
-        .main-nav a:hover {
-            color: var(--primary);
-        }
-        
-        .main-nav a:after {
+        .logo:after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--primary);
-            transition: width 0.3s;
+            background: #000;
+            transition: width 0.3s ease;
         }
         
-        .main-nav a:hover:after {
+        .logo:hover:after {
             width: 100%;
         }
         
-        .header-actions {
-            display: flex;
-            gap: 25px;
-            font-size: 1.1rem;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            cursor: pointer;
-            font-size: 1.3rem;
-        }
-        
-        /* ===== HERO SLIDER - SWAROVSKI STYLE ===== */
-        .hero-slider {
-            height: 85vh;
-            min-height: 700px;
+        /* ===== MAIN NAVIGATION ===== */
+        .main-nav {
+            transition: all 0.4s ease;
             position: relative;
-            overflow: hidden;
         }
         
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 35px;
         }
         
-        .slide.active {
-            opacity: 1;
+        .nav-item {
+            position: relative;
         }
         
-        .slide-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .slide-content {
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            transform: translateY(-50%);
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 50px;
-        }
-        
-        .slide-subtitle {
-            font-size: 1rem;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .slide-description {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: #555;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: var(--primary);
-            color: white;
-            border: none;
+        .nav-link {
+            color: #000;
             text-decoration: none;
             font-size: 0.9rem;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: #7a0178;
-            transform: translateY(-2px);
-        }
-        
-        .slider-nav {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        
-        .slider-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .slider-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-        
-        /* ===== COLLECTIONS GRID ===== */
-        .section {
-            padding: 80px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .collections-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .collection-card {
+            font-weight: 300;
+            padding: 8px 0;
             position: relative;
-            height: 500px;
-            overflow: hidden;
+            transition: color 0.3s ease;
+            display: block;
         }
         
-        .collection-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s;
-        }
-        
-        .collection-card:hover .collection-image {
-            transform: scale(1.05);
-        }
-        
-        .collection-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 40px;
-            color: white;
-        }
-        
-        .collection-overlay h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        /* ===== PRODUCT SHOWCASE ===== */
-        .products-showcase {
-            background: var(--light-gray);
-            padding: 80px 40px;
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-        
-        .product-card {
-            background: white;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        
-        .product-info {
-            padding: 25px;
-        }
-        
-        .product-name {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-        
-        .product-price {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .original-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 0.9rem;
-            margin-left: 10px;
-        }
-        
-        /* ===== STORY SECTION ===== */
-        .story-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .story-content {
-            padding-right: 40px;
-        }
-        
-        .story-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-        
-        /* ===== FOOTER ===== */
-        .main-footer {
-            background: #111;
-            color: #ccc;
-            padding: 60px 40px 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h4 {
-            color: white;
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h4:after {
+        /* Animated underline */
+        .nav-link:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 0;
             height: 1px;
-            background: var(--primary);
+            background: #000;
+            transition: width 0.3s ease;
         }
         
-        .footer-links {
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* SALE badge */
+        .sale-badge {
+            background: #000;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-left: 5px;
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        /* ===== DROPDOWN MENUS ===== */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: -20px;
+            background: #fff;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 100;
+            padding: 20px 0;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 25px;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .dropdown-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 1px;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            padding-left: 35px;
+        }
+        
+        .dropdown-item:hover:before {
+            width: 8px;
+        }
+        
+        /* ===== HEADER ACTIONS ===== */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: transform 0.4s ease;
+        }
+        
+        .action-link {
+            color: #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        .action-link.search-trigger {
+            cursor: pointer;
+        }
+        
+        /* ===== SEARCH OVERLAY ===== */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .search-overlay.active {
+            display: block;
+            animation: fadeIn 0.3s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 20px 0;
+            font-size: 2.5rem;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: transparent;
+            color: #000;
+            outline: none;
+            font-weight: 300;
+            letter-spacing: 2px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-bottom-color: #666;
+        }
+        
+        .search-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #000;
+            transition: transform 0.3s ease;
+        }
+        
+        .search-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .menu-icon {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #000;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-icon:before,
+        .menu-icon:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #000;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-icon:before {
+            top: -8px;
+        }
+        
+        .menu-icon:after {
+            bottom: -8px;
+        }
+        
+        .mobile-menu-btn.active .menu-icon {
+            background: transparent;
+        }
+        
+        .mobile-menu-btn.active .menu-icon:before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+        
+        .mobile-menu-btn.active .menu-icon:after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+        
+        /* ===== MOBILE NAVIGATION ===== */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 100px 40px 40px;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-list {
             list-style: none;
         }
         
-        .footer-links li {
-            margin-bottom: 12px;
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
         
-        .footer-links a {
-            color: #aaa;
+        .mobile-nav-link {
+            display: block;
+            padding: 20px 0;
+            color: #000;
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            position: relative;
+            transition: color 0.3s ease;
         }
         
-        .footer-links a:hover {
-            color: var(--primary);
+        .mobile-nav-link:after {
+            content: '›';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.3;
+            transition: transform 0.3s ease;
         }
         
-        .newsletter {
-            margin-top: 20px;
+        .mobile-nav-link:hover {
+            color: #666;
         }
         
-        .newsletter-input {
-            width: 100%;
-            padding: 12px;
-            background: #222;
-            border: none;
-            color: white;
-            margin-bottom: 15px;
+        .mobile-nav-link:hover:after {
+            transform: translateY(-50%) translateX(5px);
         }
         
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            color: #aaa;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #333;
-            color: #777;
-            font-size: 0.85rem;
-        }
-        
-        /* ===== MOBILE RESPONSIVENESS ===== */
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 2.8rem;
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
-            
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
             .header-container {
                 padding: 0 20px;
             }
             
-            .main-nav ul {
+            .nav-list {
                 gap: 20px;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .collections-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .story-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .story-content {
-                padding-right: 0;
             }
         }
         
@@ -507,347 +473,345 @@
             }
             
             .main-nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                height: 100vh;
-                background: white;
-                padding: 80px 40px;
-                transition: right 0.3s;
-                z-index: 999;
+                display: none;
             }
             
-            .main-nav.active {
-                right: 0;
+            .header-actions {
+                gap: 20px;
             }
             
-            .main-nav ul {
-                flex-direction: column;
-                gap: 25px;
+            .logo {
+                font-size: 1.5rem;
+                letter-spacing: 4px;
             }
             
-            .hero-slider {
-                height: 70vh;
-                min-height: 500px;
-            }
-            
-            .slide-content {
-                left: 5%;
-                padding: 30px;
-                max-width: 90%;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .promo-bar {
+                font-size: 0.75rem;
+                height: 35px;
             }
         }
         
         @media (max-width: 480px) {
-            .section {
-                padding: 60px 20px;
+            .header-container {
+                padding: 0 15px;
             }
             
-            .product-grid {
-                grid-template-columns: 1fr;
+            .logo {
+                font-size: 1.3rem;
             }
             
-            .footer-grid {
-                grid-template-columns: 1fr;
+            .header-actions {
+                gap: 15px;
             }
             
-            .collection-card {
-                height: 400px;
+            .action-link {
+                font-size: 1rem;
             }
+        }
+        
+        /* ===== DEMO CONTENT ===== */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 120px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #666;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .content-section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+        
+        .content-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        <strong>GET ₹200 OFF YOUR FIRST ORDER</strong> - USE CODE: WLC200 • 5% INSTANT DISCOUNT ON ONLINE PAYMENTS
-    </div>
-    
-    <!-- Main Header -->
-    <header class="main-header">
-        <div class="header-container">
-            <div class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+    <!-- Swarovski Style Animated Header -->
+    <header class="swarovski-header" id="mainHeader">
+        <!-- Top Promo Bar -->
+        <div class="promo-bar">
+            <div class="promo-text">
+                <strong>10% OFF</strong> YOUR NEXT PURCHASE • SIGN UP TO OUR NEWSLETTER
             </div>
-            
-            <div class="logo">ZALK<span>ARI</span></div>
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Collections</a></li>
-                    <li><a href="#">Jewelry</a></li>
-                    <li><a href="#">Gifts</a></li>
-                    <li><a href="#">Journal</a></li>
-                    <li><a href="#">Stores</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+        </div>
+        
+        <!-- Main Header -->
+        <div class="header-main">
+            <div class="header-container">
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="menu-icon"></span>
+                </button>
+                
+                <!-- Logo -->
+                <div class="logo-container">
+                    <a href="#" class="logo">SWAROVSKI</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Sale <span class="sale-badge">SALE</span></a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-item">All Sale Items</a>
+                                <a href="#" class="dropdown-item">Jewelry Sale</a>
+                                <a href="#" class="dropdown-item">Watches Sale</a>
+                                <a href="#" class="dropdown-item">Accessories Sale</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">New In</a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-item">Latest Collections</a>
+                                <a href="#" class="dropdown-item">Seasonal Picks</a>
+                                <a href="#" class="dropdown-item">Editor's Choice</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Jewelry</a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-item">Necklaces</a>
+                                <a href="#" class="dropdown-item">Earrings</a>
+                                <a href="#" class="dropdown-item">Rings</a>
+                                <a href="#" class="dropdown-item">Bracelets</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Watches</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Accessories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Decorations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Gifts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Created Diamonds</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">World of Swarovski</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <a href="#" class="action-link search-trigger" id="searchTrigger">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="action-link">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" class="action-link">
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
     
-    <!-- Hero Slider -->
-    <section class="hero-slider">
-        <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Silver Jewelry Collection" class="slide-image">
-            <div class="slide-content">
-                <div class="slide-subtitle">ELEGANT SILVER</div>
-                <h1>Timeless Beauty, Modern Design</h1>
-                <p class="slide-description">Discover our curated collection of handcrafted silver jewelry, where traditional artistry meets contemporary elegance.</p>
-                <a href="#" class="btn">Explore Collection</a>
-            </div>
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="SEARCH SWAROVSKI...">
+            <div class="search-close" id="searchClose">✕</div>
         </div>
-        
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="New Arrivals" class="slide-image">
-            <div class="slide-content">
-                <div class="slide-subtitle">NEW COLLECTION</div>
-                <h1>Ethno Modern Fusion</h1>
-                <p class="slide-description">Where traditional motifs embrace minimalist contemporary design. Limited edition pieces.</p>
-                <a href="#" class="btn">View Collection</a>
-            </div>
-        </div>
-        
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Gift Collection" class="slide-image">
-            <div class="slide-content">
-                <div class="slide-subtitle">PERFECT GIFTING</div>
-                <h1>Cherished Moments</h1>
-                <p class="slide-description">Find the perfect piece for every special occasion. Expertly curated gift selections.</p>
-                <a href="#" class="btn">Shop Gifts</a>
-            </div>
-        </div>
-        
-        <div class="slider-nav">
-            <div class="slider-dot active" data-slide="0"></div>
-            <div class="slider-dot" data-slide="1"></div>
-            <div class="slider-dot" data-slide="2"></div>
-        </div>
-    </section>
+    </div>
     
-    <!-- Collections Section -->
-    <section class="section">
-        <div class="section-title">
-            <h2>Curated Collections</h2>
-        </div>
-        
-        <div class="collections-grid">
-            <div class="collection-card">
-                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Everyday Elegance" class="collection-image">
-                <div class="collection-overlay">
-                    <h3>Everyday Elegance</h3>
-                    <p>Minimalist pieces for daily wear</p>
-                    <a href="#" class="btn" style="margin-top: 15px; background: white; color: #000;">Explore</a>
-                </div>
-            </div>
-            
-            <div class="collection-card">
-                <img src="https://images.unsplash.com/photo-1594575111051-4e4d4c5c9b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Statement Pieces" class="collection-image">
-                <div class="collection-overlay">
-                    <h3>Statement Pieces</h3>
-                    <p>Bold designs for special occasions</p>
-                    <a href="#" class="btn" style="margin-top: 15px; background: white; color: #000;">Explore</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Sale <span class="sale-badge">SALE</span></a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">New In</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Jewelry</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Watches</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Accessories</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Decorations</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Gifts</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Created Diamonds</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">World of Swarovski</a>
+            </li>
+        </ul>
+    </nav>
     
-    <!-- Featured Products -->
-    <section class="products-showcase">
-        <div class="section-title">
-            <h2>Featured Selections</h2>
-        </div>
+    <!-- Demo Content -->
+    <main>
+        <section class="hero-section">
+            <div>
+                <h1 class="hero-title">Zalkari</h1>
+                <p class="hero-subtitle">Premium Silver Jewelry</p>
+                <p style="margin-top: 30px; color: #999; letter-spacing: 2px;">Scroll down to see header animation</p>
+            </div>
+        </section>
         
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Silver Ring" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">Minimalist Silver Band</h3>
-                    <div class="product-price">₹1,979 <span class="original-price">₹3,959</span></div>
-                    <a href="#" class="btn">Add to Bag</a>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1594575111051-4e4d4c5c9b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pendant Necklace" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">Geometric Pendant</h3>
-                    <div class="product-price">₹2,375 <span class="original-price">₹4,751</span></div>
-                    <a href="#" class="btn">Add to Bag</a>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Diamond Earrings" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">Diamond Stud Earrings</h3>
-                    <div class="product-price">₹9,239 <span class="original-price">₹18,479</span></div>
-                    <a href="#" class="btn">Add to Bag</a>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Silver Bracelet" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">Twisted Silver Bracelet</h3>
-                    <div class="product-price">₹3,101 <span class="original-price">₹6,203</span></div>
-                    <a href="#" class="btn">Add to Bag</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Story Section -->
-    <section class="section">
-        <div class="story-section">
-            <div class="story-content">
-                <h2>Masters of Silver Since 2020</h2>
-                <p>Zalkari represents a fusion of traditional Indian jewelry craftsmanship with contemporary design sensibilities. Each piece is meticulously handcrafted by skilled artisans who have inherited generations of silversmithing expertise.</p>
-                <p>Our commitment to quality begins with 925 sterling silver, hallmarked for purity, and extends to every detail of design and finishing.</p>
-                <a href="#" class="btn" style="margin-top: 30px;">Our Story</a>
-            </div>
-            <div class="story-image-container">
-                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Craftsmanship" class="story-image">
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-grid">
-            <div class="footer-column">
-                <h4>Collections</h4>
-                <ul class="footer-links">
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Rings</a></li>
-                    <li><a href="#">Necklaces</a></li>
-                    <li><a href="#">Earrings</a></li>
-                    <li><a href="#">Bracelets</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Shipping & Delivery</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">Jewelry Care</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">Gift Wrapping</a></li>
-                    <li><a href="#">Personal Shopping</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Journal</a></li>
-                    <li><a href="#">Store Locator</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Stay Connected</h4>
-                <p>Subscribe for exclusive offers and new collection previews.</p>
-                <div class="newsletter">
-                    <input type="email" placeholder="Your email address" class="newsletter-input">
-                    <button class="btn" style="width: 100%;">Subscribe</button>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
+        <section class="content-section">
+            <h2>Experience Swarovski Animation</h2>
+            <p>This header replicates the exact animation behavior of Swarovski.com. When you scroll down:</p>
+            <ul style="list-style: none; margin: 20px 0;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Promo bar slides up and hides</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Navigation menu elegantly disappears</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Logo and actions shift upward smoothly</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Header becomes more compact (reduces height)</li>
+                <li style="padding: 10px 0;">✓ Scroll back up to see the reverse animation</li>
+            </ul>
+            <p>Additional features include:</p>
+            <ul style="list-style: none; margin: 20px 0;">
+                <li style="padding: 8px 0;">• Animated dropdown menus on hover</li>
+                <li style="padding: 8px 0;">• Smooth search overlay with fade-in animation</li>
+                <li style="padding: 8px 0;">• Mobile-responsive hamburger menu with transform animation</li>
+                <li style="padding: 8px 0;">• SALE badge with pulsing animation</li>
+                <li style="padding: 8px 0;">• Hover effects with animated underlines</li>
+            </ul>
+        </section>
         
-        <div class="copyright">
-            <p>© 2023 Zalkari. All rights reserved. | Premium Silver Jewelry</p>
+        <div style="height: 800px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; color: #999; letter-spacing: 2px;">
+            Keep scrolling to see the header transform
         </div>
-    </footer>
+    </main>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.main-nav').classList.toggle('active');
+        // Header Scroll Animation
+        const header = document.getElementById('mainHeader');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+                if (currentScroll > lastScroll) {
+                    // Scrolling down
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    header.style.transform = 'translateY(0)';
+                }
+            } else {
+                header.classList.remove('scrolled');
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
         });
         
-        // Hero Slider Functionality
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        const slideInterval = 6000;
+        // Search Functionality
+        const searchTrigger = document.getElementById('searchTrigger');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.querySelector('.search-input');
         
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
+        searchTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchOverlay.classList.add('active');
+            searchInput.focus();
+        });
         
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-                resetTimer();
+        searchClose.addEventListener('click', () => {
+            searchOverlay.classList.remove('active');
+        });
+        
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                searchOverlay.classList.remove('active');
+            }
+        });
+        
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
         
-        // Auto slide
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-        
-        let timer = setInterval(nextSlide, slideInterval);
-        
-        function resetTimer() {
-            clearInterval(timer);
-            timer = setInterval(nextSlide, slideInterval);
-        }
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.querySelector('.main-nav');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
+        // Dropdown hover delay
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            let timeout;
             
-            if (nav.classList.contains('active') && 
-                !nav.contains(event.target) && 
-                !menuBtn.contains(event.target)) {
-                nav.classList.remove('active');
-            }
-        });
-        
-        // Add to Cart functionality (basic)
-        document.querySelectorAll('.btn').forEach(button => {
-            if (button.textContent.includes('Add to Bag')) {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const productName = this.closest('.product-info').querySelector('.product-name').textContent;
-                    alert(`${productName} added to your bag!`);
-                });
-            }
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                const dropdown = item.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.style.transition = 'all 0.3s ease';
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const dropdown = item.querySelector('.dropdown');
+                if (dropdown) {
+                    timeout = setTimeout(() => {
+                        dropdown.style.transition = 'all 0.2s ease';
+                    }, 300);
+                }
+            });
         });
     </script>
 </body>
