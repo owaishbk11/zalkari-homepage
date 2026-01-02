@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalkari - Premium Silver Jewelry</title>
+    <title>Zalkari | Premium Silver Jewelry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset & Base Styles */
+        /* ===== SWAROVSKI-INSPIRED DESIGN ===== */
+        :root {
+            --primary: #930190;
+            --text: #000000;
+            --background: #ffffff;
+            --light-gray: #f8f8f8;
+            --border: #eaeaea;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,97 +22,82 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--background);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        /* Typography - Swarovski-inspired headings */
-        h1, h2, h3, h4 {
+        /* ===== SWAROVSKI TYPOGRAPHY ===== */
+        h1, h2, h3, h4, .logo {
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
         
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 400;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
         
         h2 {
             font-size: 2.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 3rem;
             position: relative;
-            padding-bottom: 10px;
+            display: inline-block;
         }
         
         h2:after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -10px;
             left: 0;
             width: 60px;
-            height: 2px;
-            background-color: #930190;
+            height: 1px;
+            background: var(--primary);
         }
         
         h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
         
-        .section-title {
+        p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* ===== HEADER - SWAROVSKI STYLE ===== */
+        .announcement-bar {
+            background: var(--light-gray);
             text-align: center;
-            margin-bottom: 40px;
+            padding: 10px 0;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border);
         }
         
-        .section-title h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        /* Header Styles */
-        .top-banner {
-            background-color: #f8f8f8;
-            padding: 8px 0;
-            font-size: 0.9rem;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .top-banner .highlight {
-            color: #930190;
-            font-weight: 600;
+        .announcement-bar strong {
+            color: var(--primary);
         }
         
         .main-header {
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            padding: 25px 0;
             position: sticky;
             top: 0;
-            background-color: white;
+            background: var(--background);
             z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
         
         .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -112,56 +105,66 @@
         
         .logo {
             font-size: 1.8rem;
+            letter-spacing: 4px;
             font-weight: 300;
-            letter-spacing: 3px;
         }
         
         .logo span {
-            color: #930190;
+            color: var(--primary);
         }
         
-        .nav-links {
+        .main-nav ul {
             display: flex;
             list-style: none;
+            gap: 35px;
         }
         
-        .nav-links li {
-            margin-left: 25px;
-        }
-        
-        .nav-links a {
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text);
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             transition: color 0.3s;
+            position: relative;
         }
         
-        .nav-links a:hover {
-            color: #930190;
+        .main-nav a:hover {
+            color: var(--primary);
         }
         
-        .header-icons {
+        .main-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .main-nav a:hover:after {
+            width: 100%;
+        }
+        
+        .header-actions {
             display: flex;
-            align-items: center;
-        }
-        
-        .header-icons a {
-            margin-left: 20px;
+            gap: 25px;
             font-size: 1.1rem;
         }
         
         .mobile-menu-btn {
             display: none;
-            font-size: 1.3rem;
             cursor: pointer;
+            font-size: 1.3rem;
         }
         
-        /* Hero Slider - Swarovski Style */
+        /* ===== HERO SLIDER - SWAROVSKI STYLE ===== */
         .hero-slider {
+            height: 85vh;
+            min-height: 700px;
             position: relative;
-            height: 80vh;
-            min-height: 500px;
             overflow: hidden;
-            margin-bottom: 60px;
         }
         
         .slide {
@@ -172,347 +175,231 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
         }
         
         .slide.active {
             opacity: 1;
         }
         
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .slide-content {
-            max-width: 600px;
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.85);
-            margin-left: 10%;
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
         }
         
-        .slide-content h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
+        .slide-subtitle {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            color: var(--primary);
         }
         
-        .slide-content p {
+        .slide-description {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            color: #333;
+            color: #555;
         }
         
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: #930190;
+            padding: 15px 35px;
+            background: var(--primary);
             color: white;
             border: none;
+            text-decoration: none;
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            transition: all 0.3s;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
         
         .btn:hover {
-            background-color: #7a0178;
+            background: #7a0178;
+            transform: translateY(-2px);
         }
         
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid #930190;
-            color: #930190;
-        }
-        
-        .btn-outline:hover {
-            background-color: #930190;
-            color: white;
-        }
-        
-        .slider-controls {
+        .slider-nav {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
+            gap: 10px;
         }
         
         .slider-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.3);
-            margin: 0 8px;
+            background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
         
         .slider-dot.active {
-            background-color: #930190;
+            background: var(--primary);
+            transform: scale(1.2);
         }
         
-        /* Value Proposition - Tanishq Inspired */
-        .value-props {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
+        /* ===== COLLECTIONS GRID ===== */
+        .section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .value-prop {
-            flex: 1;
-            min-width: 200px;
+        .section-title {
             text-align: center;
-            padding: 20px;
-            margin: 10px;
+            margin-bottom: 60px;
         }
         
-        .value-prop i {
-            font-size: 2rem;
-            color: #930190;
-            margin-bottom: 15px;
+        .section-title h2 {
+            display: inline-block;
         }
         
-        .value-prop h3 {
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .collection-card {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .collection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        
+        .collection-card:hover .collection-image {
+            transform: scale(1.05);
+        }
+        
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px;
+            color: white;
+        }
+        
+        .collection-overlay h3 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
         
-        /* Personalization Quiz - Tanishq Style */
-        .personalization {
-            background-color: #f9f9f9;
-            padding: 60px 0;
-            margin-bottom: 60px;
-        }
-        
-        .quiz-box {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 40px;
-            background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .quiz-box h2 {
-            margin-bottom: 15px;
-        }
-        
-        .quiz-box p {
-            margin-bottom: 30px;
-            color: #666;
-        }
-        
-        .quiz-options {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .quiz-option {
-            padding: 15px 25px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .quiz-option:hover {
-            border-color: #930190;
-            color: #930190;
-        }
-        
-        /* Product Grid - Tanishq Style */
-        .products-section {
-            margin-bottom: 60px;
-        }
-        
-        .product-filters {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 8px 20px;
-            margin: 0 5px 10px;
-            background-color: transparent;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background-color: #930190;
-            color: white;
-            border-color: #930190;
+        /* ===== PRODUCT SHOWCASE ===== */
+        .products-showcase {
+            background: var(--light-gray);
+            padding: 80px 40px;
         }
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
         }
         
         .product-card {
-            border: 1px solid #eee;
-            overflow: hidden;
+            background: white;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
-        .product-img {
-            height: 250px;
-            background-color: #f5f5f5;
-            background-size: cover;
-            background-position: center;
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
         }
         
         .product-info {
-            padding: 20px;
+            padding: 25px;
         }
         
-        .product-title {
+        .product-name {
             font-size: 1rem;
             margin-bottom: 10px;
             font-weight: 400;
+            letter-spacing: 1px;
         }
         
         .product-price {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .current-price {
             font-size: 1.2rem;
-            font-weight: 600;
-            color: #930190;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
         
         .original-price {
             text-decoration: line-through;
             color: #999;
-            margin-left: 10px;
             font-size: 0.9rem;
-        }
-        
-        .sale-badge {
-            display: inline-block;
-            background-color: #ff4d4d;
-            color: white;
-            font-size: 0.8rem;
-            padding: 3px 8px;
             margin-left: 10px;
         }
         
-        /* Collections - Swarovski Style */
-        .collections {
-            margin-bottom: 60px;
-        }
-        
-        .collection-grid {
+        /* ===== STORY SECTION ===== */
+        .story-section {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
         
-        .collection-item {
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
+        .story-content {
+            padding-right: 40px;
         }
         
-        .collection-item:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .story-image {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            height: 500px;
+            object-fit: cover;
         }
         
-        .collection-content {
-            position: relative;
-            z-index: 2;
-            padding: 25px;
-            color: white;
-            width: 100%;
-        }
-        
-        .collection-content h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        
-        /* Blog Section - Your Zalkari Tales */
-        .blog-section {
-            background-color: #f9f9f9;
-            padding: 60px 0;
-            margin-bottom: 60px;
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .blog-card {
-            background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .blog-img {
-            height: 200px;
-            background-color: #f5f5f5;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .blog-content {
-            padding: 25px;
-        }
-        
-        .blog-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .blog-excerpt {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        
-        /* Footer - Tiffany Style */
+        /* ===== FOOTER ===== */
         .main-footer {
-            background-color: #111;
-            color: #ddd;
-            padding: 60px 0 30px;
+            background: #111;
+            color: #ccc;
+            padding: 60px 40px 30px;
         }
         
-        .footer-container {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 40px;
             margin-bottom: 40px;
         }
         
         .footer-column h4 {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
             color: white;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
         }
@@ -524,7 +411,7 @@
             left: 0;
             width: 40px;
             height: 1px;
-            background-color: #930190;
+            background: var(--primary);
         }
         
         .footer-links {
@@ -532,90 +419,85 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
             color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
         
         .footer-links a:hover {
-            color: #930190;
+            color: var(--primary);
         }
         
-        .newsletter-form {
-            display: flex;
-            margin-top: 15px;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            background-color: #222;
-            color: white;
-        }
-        
-        .newsletter-form button {
-            padding: 0 20px;
-            background-color: #930190;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .social-icons {
-            display: flex;
+        .newsletter {
             margin-top: 20px;
         }
         
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: #222;
+        .newsletter-input {
+            width: 100%;
+            padding: 12px;
+            background: #222;
+            border: none;
             color: white;
-            margin-right: 10px;
-            border-radius: 50%;
-            transition: background-color 0.3s;
+            margin-bottom: 15px;
         }
         
-        .social-icons a:hover {
-            background-color: #930190;
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: #aaa;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
         }
         
         .copyright {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid #333;
-            color: #aaa;
-            font-size: 0.9rem;
+            color: #777;
+            font-size: 0.85rem;
         }
         
-        /* Mobile Responsiveness */
-        @media (max-width: 992px) {
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 1024px) {
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
             
-            h2 {
-                font-size: 1.8rem;
+            .header-container {
+                padding: 0 20px;
             }
             
-            .slide-content {
-                margin-left: 5%;
-                padding: 30px;
+            .main-nav ul {
+                gap: 20px;
             }
             
-            .slide-content h1 {
-                font-size: 2.5rem;
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .value-prop {
-                min-width: 150px;
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-content {
+                padding-right: 0;
             }
         }
         
@@ -624,118 +506,93 @@
                 display: block;
             }
             
-            .nav-links {
+            .main-nav {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 70%;
+                width: 80%;
                 height: 100vh;
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 80px;
+                background: white;
+                padding: 80px 40px;
                 transition: right 0.3s;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
                 z-index: 999;
             }
             
-            .nav-links.active {
+            .main-nav.active {
                 right: 0;
             }
             
-            .nav-links li {
-                margin: 15px 0;
+            .main-nav ul {
+                flex-direction: column;
+                gap: 25px;
             }
             
             .hero-slider {
                 height: 70vh;
+                min-height: 500px;
             }
             
             .slide-content {
-                margin: 0 auto;
-                background-color: rgba(255, 255, 255, 0.9);
+                left: 5%;
+                padding: 30px;
+                max-width: 90%;
             }
             
-            .value-props {
-                flex-direction: column;
-                align-items: center;
+            h1 {
+                font-size: 2.2rem;
             }
             
-            .value-prop {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .collection-grid,
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .hero-slider {
-                height: 60vh;
-                min-height: 400px;
-            }
-            
-            .slide-content {
-                padding: 20px;
-            }
-            
-            .slide-content h1 {
-                font-size: 2rem;
+        @media (max-width: 480px) {
+            .section {
+                padding: 60px 20px;
             }
             
             .product-grid {
                 grid-template-columns: 1fr;
             }
             
-            .quiz-options {
-                flex-direction: column;
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .collection-card {
+                height: 400px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Banner -->
-    <div class="top-banner">
-        <div class="container">
-            <span class="highlight">GET ₹200 OFF YOUR FIRST ORDER</span> - USE CODE: WLC200 | <span class="highlight">5% INSTANT DISCOUNT</span> ON ONLINE PAYMENTS
-        </div>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <strong>GET ₹200 OFF YOUR FIRST ORDER</strong> - USE CODE: WLC200 • 5% INSTANT DISCOUNT ON ONLINE PAYMENTS
     </div>
     
     <!-- Main Header -->
     <header class="main-header">
-        <div class="container header-container">
+        <div class="header-container">
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
+            
             <div class="logo">ZALK<span>ARI</span></div>
-            <nav>
-                <ul class="nav-links">
+            
+            <nav class="main-nav">
+                <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Top Selling</a></li>
                     <li><a href="#">Collections</a></li>
-                    <li><a href="#">Zalkari Tales</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Jewelry</a></li>
+                    <li><a href="#">Gifts</a></li>
+                    <li><a href="#">Journal</a></li>
+                    <li><a href="#">Stores</a></li>
                 </ul>
             </nav>
-            <div class="header-icons">
+            
+            <div class="header-actions">
                 <a href="#"><i class="fas fa-search"></i></a>
                 <a href="#"><i class="fas fa-user"></i></a>
                 <a href="#"><i class="fas fa-shopping-bag"></i></a>
@@ -745,345 +602,252 @@
     
     <!-- Hero Slider -->
     <section class="hero-slider">
-        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Silver Jewelry Collection" class="slide-image">
             <div class="slide-content">
-                <h1>Elegant Silver for Everyday Moments</h1>
-                <p>Discover handcrafted silver jewelry that blends traditional artistry with contemporary design. Each piece tells a story.</p>
-                <a href="#" class="btn">Shop Now</a>
+                <div class="slide-subtitle">ELEGANT SILVER</div>
+                <h1>Timeless Beauty, Modern Design</h1>
+                <p class="slide-description">Discover our curated collection of handcrafted silver jewelry, where traditional artistry meets contemporary elegance.</p>
+                <a href="#" class="btn">Explore Collection</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
+        
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="New Arrivals" class="slide-image">
             <div class="slide-content">
-                <h1>Find Your Perfect Gift</h1>
-                <p>Not sure what to choose? Our personalized quiz will help you find the ideal jewelry piece for any occasion.</p>
-                <a href="#" class="btn btn-outline">Take the Quiz</a>
-            </div>
-        </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');">
-            <div class="slide-content">
-                <h1>New Collection: Ethno Modern</h1>
-                <p>Explore our latest fusion collection where traditional motifs meet minimalist contemporary design.</p>
+                <div class="slide-subtitle">NEW COLLECTION</div>
+                <h1>Ethno Modern Fusion</h1>
+                <p class="slide-description">Where traditional motifs embrace minimalist contemporary design. Limited edition pieces.</p>
                 <a href="#" class="btn">View Collection</a>
             </div>
         </div>
-        <div class="slider-controls">
+        
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Gift Collection" class="slide-image">
+            <div class="slide-content">
+                <div class="slide-subtitle">PERFECT GIFTING</div>
+                <h1>Cherished Moments</h1>
+                <p class="slide-description">Find the perfect piece for every special occasion. Expertly curated gift selections.</p>
+                <a href="#" class="btn">Shop Gifts</a>
+            </div>
+        </div>
+        
+        <div class="slider-nav">
             <div class="slider-dot active" data-slide="0"></div>
             <div class="slider-dot" data-slide="1"></div>
             <div class="slider-dot" data-slide="2"></div>
         </div>
     </section>
     
-    <!-- Value Propositions -->
-    <section class="container">
-        <div class="value-props">
-            <div class="value-prop">
-                <i class="fas fa-shipping-fast"></i>
-                <h3>Free Shipping</h3>
-                <p>On all orders over ₹1999</p>
-            </div>
-            <div class="value-prop">
-                <i class="fas fa-award"></i>
-                <h3>Hallmarked Quality</h3>
-                <p>Certified 925 sterling silver</p>
-            </div>
-            <div class="value-prop">
-                <i class="fas fa-undo-alt"></i>
-                <h3>Easy Returns</h3>
-                <p>30-day return policy</p>
-            </div>
-            <div class="value-prop">
-                <i class="fas fa-headset"></i>
-                <h3>Expert Support</h3>
-                <p>We're here to help</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Personalization Quiz -->
-    <section class="personalization">
-        <div class="container">
-            <div class="quiz-box">
-                <h2>Find Your Perfect Piece</h2>
-                <p>Answer a few questions and we'll recommend jewelry that matches your style and occasion</p>
-                <div class="quiz-options">
-                    <div class="quiz-option">For Myself</div>
-                    <div class="quiz-option">As a Gift</div>
-                    <div class="quiz-option">Wedding/Festive</div>
-                    <div class="quiz-option">Daily Wear</div>
-                </div>
-                <a href="#" class="btn">Start Personalization Quiz</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Top Selling Products -->
-    <section class="products-section container">
+    <!-- Collections Section -->
+    <section class="section">
         <div class="section-title">
-            <h2>Top Selling</h2>
-            <p>Our most loved pieces by customers</p>
+            <h2>Curated Collections</h2>
         </div>
-        <div class="product-filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Rings</button>
-            <button class="filter-btn">Necklaces</button>
-            <button class="filter-btn">Earrings</button>
-            <button class="filter-btn">Bracelets</button>
+        
+        <div class="collections-grid">
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Everyday Elegance" class="collection-image">
+                <div class="collection-overlay">
+                    <h3>Everyday Elegance</h3>
+                    <p>Minimalist pieces for daily wear</p>
+                    <a href="#" class="btn" style="margin-top: 15px; background: white; color: #000;">Explore</a>
+                </div>
+            </div>
+            
+            <div class="collection-card">
+                <img src="https://images.unsplash.com/photo-1594575111051-4e4d4c5c9b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Statement Pieces" class="collection-image">
+                <div class="collection-overlay">
+                    <h3>Statement Pieces</h3>
+                    <p>Bold designs for special occasions</p>
+                    <a href="#" class="btn" style="margin-top: 15px; background: white; color: #000;">Explore</a>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="products-showcase">
+        <div class="section-title">
+            <h2>Featured Selections</h2>
+        </div>
+        
         <div class="product-grid">
-            <!-- Product 1 -->
             <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Silver Ring" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Minimalist Silver Ring</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹1,979</span>
-                        <span class="original-price">₹3,959</span>
-                        <span class="sale-badge">50% OFF</span>
-                    </div>
-                    <a href="#" class="btn" style="padding: 8px 20px; width: 100%;">Add to Cart</a>
+                    <h3 class="product-name">Minimalist Silver Band</h3>
+                    <div class="product-price">₹1,979 <span class="original-price">₹3,959</span></div>
+                    <a href="#" class="btn">Add to Bag</a>
                 </div>
             </div>
-            <!-- Product 2 -->
+            
             <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <img src="https://images.unsplash.com/photo-1594575111051-4e4d4c5c9b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pendant Necklace" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Geometric Pendant Necklace</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹2,111</span>
-                        <span class="original-price">₹4,223</span>
-                        <span class="sale-badge">50% OFF</span>
-                    </div>
-                    <a href="#" class="btn" style="padding: 8px 20px; width: 100%;">Add to Cart</a>
+                    <h3 class="product-name">Geometric Pendant</h3>
+                    <div class="product-price">₹2,375 <span class="original-price">₹4,751</span></div>
+                    <a href="#" class="btn">Add to Bag</a>
                 </div>
             </div>
-            <!-- Product 3 -->
+            
             <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Diamond Earrings" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Diamond Stud Earrings</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹9,239</span>
-                        <span class="original-price">₹18,479</span>
-                        <span class="sale-badge">50% OFF</span>
-                    </div>
-                    <a href="#" class="btn" style="padding: 8px 20px; width: 100%;">Add to Cart</a>
+                    <h3 class="product-name">Diamond Stud Earrings</h3>
+                    <div class="product-price">₹9,239 <span class="original-price">₹18,479</span></div>
+                    <a href="#" class="btn">Add to Bag</a>
                 </div>
             </div>
-            <!-- Product 4 -->
+            
             <div class="product-card">
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Silver Bracelet" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Statement Silver Bracelet</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹3,101</span>
-                        <span class="original-price">₹6,203</span>
-                        <span class="sale-badge">50% OFF</span>
-                    </div>
-                    <a href="#" class="btn" style="padding: 8px 20px; width: 100%;">Add to Cart</a>
+                    <h3 class="product-name">Twisted Silver Bracelet</h3>
+                    <div class="product-price">₹3,101 <span class="original-price">₹6,203</span></div>
+                    <a href="#" class="btn">Add to Bag</a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Collections -->
-    <section class="collections container">
-        <div class="section-title">
-            <h2>Shop By Collection</h2>
-            <p>Curated selections for every style</p>
-        </div>
-        <div class="collection-grid">
-            <div class="collection-item" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                <div class="collection-content">
-                    <h3>Ethnic Collection</h3>
-                    <p>Traditional designs with a modern twist</p>
-                    <a href="#" class="btn" style="margin-top: 10px; padding: 8px 20px;">Explore</a>
-                </div>
+    <!-- Story Section -->
+    <section class="section">
+        <div class="story-section">
+            <div class="story-content">
+                <h2>Masters of Silver Since 2020</h2>
+                <p>Zalkari represents a fusion of traditional Indian jewelry craftsmanship with contemporary design sensibilities. Each piece is meticulously handcrafted by skilled artisans who have inherited generations of silversmithing expertise.</p>
+                <p>Our commitment to quality begins with 925 sterling silver, hallmarked for purity, and extends to every detail of design and finishing.</p>
+                <a href="#" class="btn" style="margin-top: 30px;">Our Story</a>
             </div>
-            <div class="collection-item" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                <div class="collection-content">
-                    <h3>Minimalist Daily Wear</h3>
-                    <p>Subtle elegance for everyday</p>
-                    <a href="#" class="btn" style="margin-top: 10px; padding: 8px 20px;">Explore</a>
-                </div>
-            </div>
-            <div class="collection-item" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-                <div class="collection-content">
-                    <h3>Wedding & Festive</h3>
-                    <p>Make your special moments shine</p>
-                    <a href="#" class="btn" style="margin-top: 10px; padding: 8px 20px;">Explore</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Blog Section -->
-    <section class="blog-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Zalkari Tales</h2>
-                <p>Stories, guides, and inspiration from our journal</p>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">A Guide to Gold Plated Jewellery</h3>
-                        <p class="blog-excerpt">Everything you need to know about gold plated jewelry - from care to styling tips.</p>
-                        <a href="#" class="btn" style="padding: 8px 20px;">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Benefits of Ear Piercing</h3>
-                        <p class="blog-excerpt">Explore the health, scientific, and spiritual benefits of ear piercing across cultures.</p>
-                        <a href="#" class="btn" style="padding: 8px 20px;">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Lab Grown Diamonds Explained</h3>
-                        <p class="blog-excerpt">Understanding the resale value and benefits of lab grown diamonds for modern buyers.</p>
-                        <a href="#" class="btn" style="padding: 8px 20px;">Read More</a>
-                    </div>
-                </div>
+            <div class="story-image-container">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Craftsmanship" class="story-image">
             </div>
         </div>
     </section>
     
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h4>Shop</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Best Sellers</a></li>
-                        <li><a href="#">Rings</a></li>
-                        <li><a href="#">Necklaces</a></li>
-                        <li><a href="#">Earrings</a></li>
-                        <li><a href="#">Bracelets</a></li>
-                    </ul>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Collections</h4>
+                <ul class="footer-links">
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Rings</a></li>
+                    <li><a href="#">Necklaces</a></li>
+                    <li><a href="#">Earrings</a></li>
+                    <li><a href="#">Bracelets</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Jewelry Care</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Gift Wrapping</a></li>
+                    <li><a href="#">Personal Shopping</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Journal</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Stay Connected</h4>
+                <p>Subscribe for exclusive offers and new collection previews.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Your email address" class="newsletter-input">
+                    <button class="btn" style="width: 100%;">Subscribe</button>
                 </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Shipping & Returns</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                        <li><a href="#">Jewelry Care</a></li>
-                        <li><a href="#">Track Order</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">About Zalkari</a></li>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Zalkari Tales</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Store Locator</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Stay Connected</h4>
-                    <p>Subscribe for exclusive offers, styling tips, and new collection alerts.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 Zalkari. All rights reserved. | Best Silver Jewellery Store & Shop Online In India</p>
-            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 Zalkari. All rights reserved. | Premium Silver Jewelry</p>
         </div>
     </footer>
     
     <script>
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.main-nav').classList.toggle('active');
         });
         
-        // Hero Slider
+        // Hero Slider Functionality
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.slider-dot');
         let currentSlide = 0;
-        const slideInterval = 5000; // 5 seconds
+        const slideInterval = 6000;
         
-        function showSlide(n) {
-            // Hide all slides
+        function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
-            // Update current slide index
-            currentSlide = (n + slides.length) % slides.length;
-            
-            // Show current slide
+            currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
         }
         
-        // Dot click events
+        // Dot navigation
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
-                resetInterval();
+                resetTimer();
             });
         });
         
-        // Auto slide function
+        // Auto slide
         function nextSlide() {
             showSlide(currentSlide + 1);
         }
         
-        // Set up auto sliding
-        let slideTimer = setInterval(nextSlide, slideInterval);
+        let timer = setInterval(nextSlide, slideInterval);
         
-        // Reset timer when user interacts with slider
-        function resetInterval() {
-            clearInterval(slideTimer);
-            slideTimer = setInterval(nextSlide, slideInterval);
+        function resetTimer() {
+            clearInterval(timer);
+            timer = setInterval(nextSlide, slideInterval);
         }
         
-        // Product filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                // In a real implementation, you would filter products here
-            });
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.main-nav');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (nav.classList.contains('active') && 
+                !nav.contains(event.target) && 
+                !menuBtn.contains(event.target)) {
+                nav.classList.remove('active');
+            }
         });
         
-        // Quiz option selection
-        const quizOptions = document.querySelectorAll('.quiz-option');
-        quizOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selection from all options
-                quizOptions.forEach(opt => {
-                    opt.style.backgroundColor = '';
-                    opt.style.color = '';
-                    opt.style.borderColor = '#ddd';
+        // Add to Cart functionality (basic)
+        document.querySelectorAll('.btn').forEach(button => {
+            if (button.textContent.includes('Add to Bag')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productName = this.closest('.product-info').querySelector('.product-name').textContent;
+                    alert(`${productName} added to your bag!`);
                 });
-                // Highlight selected option
-                this.style.backgroundColor = '#930190';
-                this.style.color = 'white';
-                this.style.borderColor = '#930190';
-            });
+            }
         });
     </script>
 </body>
