@@ -3,1030 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalkari | Premium Silver Jewelry</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Swarovski Style Animated Header</title>
     <style>
         /* ===== BASE STYLES ===== */
-        :root {
-            --primary: #930190;
-            --text-dark: #1a1a1a;
-            --text-light: #666;
-            --background: #ffffff;
-            --border: #e8e8e8;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--background);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #fff;
+            color: #000;
+            min-height: 200vh; /* For scrolling demo */
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
+        
+        /* ===== SWAROVSKI ANIMATED HEADER ===== */
+        .swarovski-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+        
+        /* Header States */
+        .swarovski-header.scrolled {
+            transform: translateY(-40px);
+            opacity: 0.95;
         }
-
-        /* ===== TOP BAR ===== */
-        .top-bar {
+        
+        .swarovski-header.scrolled .main-nav {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .swarovski-header.scrolled .logo-container,
+        .swarovski-header.scrolled .header-actions {
+            transform: translateY(40px);
+        }
+        
+        /* ===== TOP PROMO BAR ===== */
+        .promo-bar {
             background: #000;
             color: #fff;
-            padding: 12px 0;
-            font-size: 0.875rem;
-            border-bottom: 1px solid #333;
-        }
-
-        .top-bar-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .top-bar-left {
-            display: flex;
-            gap: 24px;
-        }
-
-        .top-bar-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.875rem;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-        }
-
-        .top-bar-link:hover {
-            opacity: 0.8;
-        }
-
-        /* ===== MAIN HEADER ===== */
-        .main-header {
-            background: var(--background);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            color: var(--text-dark);
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        .main-nav {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-link {
-            font-size: 0.9375rem;
-            color: var(--text-dark);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            transition: var(--transition);
-            position: relative;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .promo-text {
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .promo-bar strong {
+            font-weight: 600;
+            margin: 0 5px;
+        }
+        
+        /* ===== MAIN HEADER CONTENT ===== */
+        .header-main {
+            padding: 15px 0;
+            transition: padding 0.3s ease;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .swarovski-header.scrolled .header-main {
             padding: 8px 0;
         }
-
-        .nav-link:hover {
-            color: var(--primary);
+        
+        /* ===== LOGO ===== */
+        .logo-container {
+            transition: transform 0.4s ease;
         }
-
-        .nav-link.active {
-            color: var(--primary);
+        
+        .logo {
+            font-size: 1.8rem;
+            letter-spacing: 6px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+            display: block;
+            position: relative;
         }
-
-        .nav-link.active:after {
+        
+        .logo:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover:after {
+            width: 100%;
+        }
+        
+        /* ===== MAIN NAVIGATION ===== */
+        .main-nav {
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 300;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            display: block;
+        }
+        
+        /* Animated underline */
+        .nav-link:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 0;
             height: 1px;
-            background: var(--primary);
+            background: #000;
+            transition: width 0.3s ease;
         }
-
-        .header-icons {
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* SALE badge */
+        .sale-badge {
+            background: #000;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-left: 5px;
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        /* ===== DROPDOWN MENUS ===== */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: -20px;
+            background: #fff;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 100;
+            padding: 20px 0;
+        }
+        
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 25px;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .dropdown-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 1px;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            padding-left: 35px;
+        }
+        
+        .dropdown-item:hover:before {
+            width: 8px;
+        }
+        
+        /* ===== HEADER ACTIONS ===== */
+        .header-actions {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 25px;
+            transition: transform 0.4s ease;
+        }
+        
+        .action-link {
+            color: #000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            transition: transform 0.3s ease;
+            display: flex;
             align-items: center;
         }
-
-        .icon-link {
-            color: var(--text-dark);
-            font-size: 1.125rem;
-            transition: var(--transition);
-        }
-
-        .icon-link:hover {
-            color: var(--primary);
+        
+        .action-link:hover {
             transform: translateY(-2px);
         }
-
+        
+        .action-link.search-trigger {
+            cursor: pointer;
+        }
+        
+        /* ===== SEARCH OVERLAY ===== */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .search-overlay.active {
+            display: block;
+            animation: fadeIn 0.3s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 20px 0;
+            font-size: 2.5rem;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: transparent;
+            color: #000;
+            outline: none;
+            font-weight: 300;
+            letter-spacing: 2px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-bottom-color: #666;
+        }
+        
+        .search-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #000;
+            transition: transform 0.3s ease;
+        }
+        
+        .search-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        /* ===== MOBILE MENU BUTTON ===== */
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
-            color: var(--text-dark);
             cursor: pointer;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero-section {
+            width: 30px;
+            height: 30px;
             position: relative;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
-            overflow: hidden;
+            z-index: 1001;
         }
-
-        .hero-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
+        
+        .menu-icon {
+            display: block;
             width: 100%;
-        }
-
-        .hero-text {
-            max-width: 500px;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-            letter-spacing: 3px;
-            color: var(--primary);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: 2px;
-        }
-
-        .hero-description {
-            font-size: 1.125rem;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            max-width: 400px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border: none;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #7a0178;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--text-dark);
-            color: var(--text-dark);
-        }
-
-        .btn-secondary:hover {
-            background: var(--text-dark);
-            color: white;
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50%;
-            max-width: 700px;
-            z-index: 1;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        /* ===== FEATURED PRODUCTS ===== */
-        .section {
-            padding: 80px 24px;
-            max-width: 1440px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
+            height: 2px;
+            background: #000;
             position: relative;
-            display: inline-block;
+            transition: all 0.3s ease;
         }
-
-        .section-title:after {
+        
+        .menu-icon:before,
+        .menu-icon:after {
             content: '';
             position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
+            width: 100%;
             height: 2px;
-            background: var(--primary);
-        }
-
-        .section-subtitle {
-            color: var(--text-light);
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 48px;
-        }
-
-        .product-card {
-            background: white;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .product-image {
-            height: 320px;
-            overflow: hidden;
-            background: #f8f8f8;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 24px;
-        }
-
-        .product-category {
-            font-size: 0.875rem;
-            color: var(--text-light);
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .product-name {
-            font-size: 1.125rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .current-price {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .original-price {
-            font-size: 1rem;
-            color: var(--text-light);
-            text-decoration: line-through;
-        }
-
-        .product-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            padding: 4px 12px;
-            background: #f8f8f8;
-            color: var(--text-light);
-            font-size: 0.75rem;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .tag.sale {
-            background: #ffe6e6;
-            color: #d32f2f;
-        }
-
-        /* ===== CATEGORIES ===== */
-        .categories-section {
-            background: #f8f8f8;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .category-card {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .category-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .category-overlay {
-            position: absolute;
-            bottom: 0;
+            background: #000;
             left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 32px;
-            color: white;
+            transition: all 0.3s ease;
         }
-
-        .category-title {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            font-weight: 300;
-            letter-spacing: 2px;
+        
+        .menu-icon:before {
+            top: -8px;
         }
-
-        /* ===== NEWSLETTER ===== */
-        .newsletter-section {
-            background: var(--text-dark);
-            color: white;
-            text-align: center;
+        
+        .menu-icon:after {
+            bottom: -8px;
         }
-
-        .newsletter-content {
-            max-width: 600px;
-            margin: 0 auto;
+        
+        .mobile-menu-btn.active .menu-icon {
+            background: transparent;
         }
-
-        .newsletter-title {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
+        
+        .mobile-menu-btn.active .menu-icon:before {
+            top: 0;
+            transform: rotate(45deg);
         }
-
-        .newsletter-description {
-            color: #ccc;
-            margin-bottom: 32px;
-            font-size: 1.125rem;
+        
+        .mobile-menu-btn.active .menu-icon:after {
+            bottom: 0;
+            transform: rotate(-45deg);
         }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 400px;
-            margin: 0 auto;
+        
+        /* ===== MOBILE NAVIGATION ===== */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 100px 40px 40px;
+            overflow-y: auto;
         }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 14px 20px;
-            border: none;
-            font-size: 1rem;
-            color: var(--text-dark);
+        
+        .mobile-nav.active {
+            transform: translateX(0);
         }
-
-        .newsletter-input:focus {
-            outline: none;
-        }
-
-        .newsletter-btn {
-            padding: 14px 32px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .newsletter-btn:hover {
-            background: #7a0178;
-        }
-
-        /* ===== FOOTER ===== */
-        .main-footer {
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 60px 24px 30px;
-        }
-
-        .footer-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h4 {
-            color: white;
-            font-size: 1.125rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-        }
-
-        .footer-links {
+        
+        .mobile-nav-list {
             list-style: none;
         }
-
-        .footer-links li {
-            margin-bottom: 12px;
+        
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-
-        .footer-links a {
-            color: #999;
-            font-size: 0.9375rem;
-            transition: var(--transition);
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 20px 0;
+            color: #000;
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            position: relative;
+            transition: color 0.3s ease;
         }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 8px;
+        
+        .mobile-nav-link:after {
+            content: '›';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            opacity: 0.3;
+            transition: transform 0.3s ease;
         }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .social-link {
-            width: 36px;
-            height: 36px;
-            background: #333;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #333;
+        
+        .mobile-nav-link:hover {
             color: #666;
-            font-size: 0.875rem;
         }
-
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-image {
-                width: 45%;
-            }
-            
-            .main-nav {
-                gap: 24px;
-            }
+        
+        .mobile-nav-link:hover:after {
+            transform: translateY(-50%) translateX(5px);
         }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .main-nav {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                padding: 100px 40px 40px;
-                transition: var(--transition);
-                z-index: 1000;
-            }
-            
-            .main-nav.active {
-                left: 0;
-            }
-            
-            .hero-section {
-                min-height: 70vh;
-            }
-            
-            .hero-content {
-                text-align: center;
-            }
-            
-            .hero-text {
-                max-width: 100%;
-            }
-            
-            .hero-image {
-                position: relative;
-                width: 100%;
-                max-width: 400px;
-                margin: 40px auto 0;
-                transform: none;
-                top: 0;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .section {
-                padding: 60px 20px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-input,
-            .newsletter-btn {
-                width: 100%;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-        }
-
+        
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .nav-list {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .header-actions {
+                gap: 20px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                letter-spacing: 4px;
+            }
+            
+            .promo-bar {
+                font-size: 0.75rem;
+                height: 35px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .header-actions {
+                gap: 15px;
+            }
+            
+            .action-link {
+                font-size: 1rem;
+            }
+        }
+        
+        /* ===== DEMO CONTENT ===== */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 120px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #666;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .content-section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+        
+        .content-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="top-bar-left">
-                <a href="#" class="top-bar-link">Free Shipping Worldwide</a>
-                <a href="#" class="top-bar-link">Easy Returns</a>
-                <a href="#" class="top-bar-link">Expert Support</a>
-            </div>
-            <div class="top-bar-right">
-                <a href="#" class="top-bar-link">Get 10% Off First Order</a>
+    <!-- Swarovski Style Animated Header -->
+    <header class="swarovski-header" id="mainHeader">
+        <!-- Top Promo Bar -->
+        <div class="promo-bar">
+            <div class="promo-text">
+                <strong>10% OFF</strong> YOUR NEXT PURCHASE • SIGN UP TO OUR NEWSLETTER
             </div>
         </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="main-header">
-        <div class="header-content">
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <a href="#" class="logo">ZALK<span>ARI</span></a>
-            
-            <nav class="main-nav">
-                <a href="#" class="nav-link active">Home</a>
-                <a href="#" class="nav-link">Shop</a>
-                <a href="#" class="nav-link">Collections</a>
-                <a href="#" class="nav-link">Best Sellers</a>
-                <a href="#" class="nav-link">New Arrivals</a>
-                <a href="#" class="nav-link">Journal</a>
-                <a href="#" class="nav-link">Contact</a>
-            </nav>
-            
-            <div class="header-icons">
-                <a href="#" class="icon-link">
-                    <i class="fas fa-search"></i>
-                </a>
-                <a href="#" class="icon-link">
-                    <i class="fas fa-user"></i>
-                </a>
-                <a href="#" class="icon-link">
-                    <i class="fas fa-shopping-bag"></i>
-                </a>
+        
+        <!-- Main Header -->
+        <div class="header-main">
+            <div class="header-container">
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span class="menu-icon"></span>
+                </button>
+                
+                <!-- Logo -->
+                <div class="logo-container">
+                    <a href="#" class="logo">SWAROVSKI</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Sale <span class="sale-badge">SALE</span></a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-item">All Sale Items</a>
+                                <a href="#" class="dropdown-item">Jewelry Sale</a>
+                                <a href="#" class="dropdown-item">Watches Sale</a>
+                                <a href="#" class="dropdown-item">Accessories Sale</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">New In</a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-item">Latest Collections</a>
+                                <a href="#" class="dropdown-item">Seasonal Picks</a>
+                                <a href="#" class="dropdown-item">Editor's Choice</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Jewelry</a>
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-item">Necklaces</a>
+                                <a href="#" class="dropdown-item">Earrings</a>
+                                <a href="#" class="dropdown-item">Rings</a>
+                                <a href="#" class="dropdown-item">Bracelets</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Watches</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Accessories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Decorations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Gifts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Created Diamonds</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">World of Swarovski</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <a href="#" class="action-link search-trigger" id="searchTrigger">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="action-link">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" class="action-link">
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <div class="hero-text fade-in">
-                <div class="hero-subtitle">Premium Silver Jewelry</div>
-                <h1 class="hero-title">Elegance Meets Craftsmanship</h1>
-                <p class="hero-description">
-                    Discover handcrafted silver jewelry that blends traditional artistry with contemporary design. Each piece tells a unique story.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">Shop Collection</button>
-                    <button class="btn btn-secondary">View Lookbook</button>
-                </div>
-            </div>
-            <div class="hero-image fade-in">
-                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                     alt="Premium Silver Jewelry">
-            </div>
+    
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="SEARCH SWAROVSKI...">
+            <div class="search-close" id="searchClose">✕</div>
         </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="section">
-        <div class="section-header">
-            <h2 class="section-title">Featured Collections</h2>
-            <p class="section-subtitle">Handpicked selections of our finest jewelry</p>
-        </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Sale <span class="sale-badge">SALE</span></a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">New In</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Jewelry</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Watches</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Accessories</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Decorations</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Gifts</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">Created Diamonds</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link">World of Swarovski</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Demo Content -->
+    <main>
+        <section class="hero-section">
+            <div>
+                <h1 class="hero-title">Zalkari</h1>
+                <p class="hero-subtitle">Premium Silver Jewelry</p>
+                <p style="margin-top: 30px; color: #999; letter-spacing: 2px;">Scroll down to see header animation</p>
+            </div>
+        </section>
         
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         alt="Geometric Necklace">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Necklaces</div>
-                    <h3 class="product-name">Geometric Silver Pendant</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹2,375</span>
-                        <span class="original-price">₹4,751</span>
-                    </div>
-                    <div class="product-tags">
-                        <span class="tag sale">50% Off</span>
-                        <span class="tag">Best Seller</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 2 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         alt="Minimalist Ring">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Rings</div>
-                    <h3 class="product-name">Minimalist Silver Band</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹1,979</span>
-                        <span class="original-price">₹3,959</span>
-                    </div>
-                    <div class="product-tags">
-                        <span class="tag sale">50% Off</span>
-                        <span class="tag">New Arrival</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 3 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         alt="Statement Earrings">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Earrings</div>
-                    <h3 class="product-name">Diamond Drop Earrings</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹4,091</span>
-                        <span class="original-price">₹8,183</span>
-                    </div>
-                    <div class="product-tags">
-                        <span class="tag sale">50% Off</span>
-                        <span class="tag">Limited Edition</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Product 4 -->
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1594575111051-4e4d4c5c9b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                         alt="Modern Bracelet">
-                </div>
-                <div class="product-info">
-                    <div class="product-category">Bracelets</div>
-                    <h3 class="product-name">Twisted Silver Bracelet</h3>
-                    <div class="product-price">
-                        <span class="current-price">₹3,101</span>
-                        <span class="original-price">₹6,203</span>
-                    </div>
-                    <div class="product-tags">
-                        <span class="tag sale">50% Off</span>
-                        <span class="tag">Editor's Pick</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="section categories-section">
-        <div class="section-header">
-            <h2 class="section-title">Shop By Category</h2>
-            <p class="section-subtitle">Find your perfect piece</p>
-        </div>
+        <section class="content-section">
+            <h2>Experience Swarovski Animation</h2>
+            <p>This header replicates the exact animation behavior of Swarovski.com. When you scroll down:</p>
+            <ul style="list-style: none; margin: 20px 0;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Promo bar slides up and hides</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Navigation menu elegantly disappears</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Logo and actions shift upward smoothly</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✓ Header becomes more compact (reduces height)</li>
+                <li style="padding: 10px 0;">✓ Scroll back up to see the reverse animation</li>
+            </ul>
+            <p>Additional features include:</p>
+            <ul style="list-style: none; margin: 20px 0;">
+                <li style="padding: 8px 0;">• Animated dropdown menus on hover</li>
+                <li style="padding: 8px 0;">• Smooth search overlay with fade-in animation</li>
+                <li style="padding: 8px 0;">• Mobile-responsive hamburger menu with transform animation</li>
+                <li style="padding: 8px 0;">• SALE badge with pulsing animation</li>
+                <li style="padding: 8px 0;">• Hover effects with animated underlines</li>
+            </ul>
+        </section>
         
-        <div class="categories-grid">
-            <!-- Category 1 -->
-            <div class="category-card fade-in">
-                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                     alt="Necklaces">
-                <div class="category-overlay">
-                    <h3 class="category-title">Necklaces</h3>
-                    <p>Elegant pendants and chains</p>
-                </div>
-            </div>
-            
-            <!-- Category 2 -->
-            <div class="category-card fade-in">
-                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                     alt="Rings">
-                <div class="category-overlay">
-                    <h3 class="category-title">Rings</h3>
-                    <p>From minimal to statement</p>
-                </div>
-            </div>
-            
-            <!-- Category 3 -->
-            <div class="category-card fade-in">
-                <img src="https://images.unsplash.com/photo-1594575111051-4e4d4c5c9b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                     alt="Earrings">
-                <div class="category-overlay">
-                    <h3 class="category-title">Earrings</h3>
-                    <p>Studs, drops, and hoops</p>
-                </div>
-            </div>
+        <div style="height: 800px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; color: #999; letter-spacing: 2px;">
+            Keep scrolling to see the header transform
         </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="section newsletter-section">
-        <div class="newsletter-content">
-            <h2 class="newsletter-title">Stay Updated</h2>
-            <p class="newsletter-description">
-                Subscribe to receive updates on new collections, exclusive offers, and style inspiration.
-            </p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h4>Shop</h4>
-                <ul class="footer-links">
-                    <li><a href="#">All Jewelry</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Sale</a></li>
-                    <li><a href="#">Gift Cards</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Information</h4>
-                <ul class="footer-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Shipping Info</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Customer Service</h4>
-                <ul class="footer-links">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Size Guide</a></li>
-                    <li><a href="#">Jewelry Care</a></li>
-                    <li><a href="#">Order Tracking</a></li>
-                    <li><a href="#">Contact Support</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h4>Connect With Us</h4>
-                <p style="color: #999; margin-bottom: 20px;">Follow us for style inspiration and updates</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-pinterest"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 Zalkari. All rights reserved. | Premium Silver Jewelry Store</p>
-        </div>
-    </footer>
-
+    </main>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mainNav = document.querySelector('.main-nav');
+        // Header Scroll Animation
+        const header = document.getElementById('mainHeader');
+        let lastScroll = 0;
         
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+                if (currentScroll > lastScroll) {
+                    // Scrolling down
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    header.style.transform = 'translateY(0)';
+                }
+            } else {
+                header.classList.remove('scrolled');
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
         });
         
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                mainNav.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        // Search Functionality
+        const searchTrigger = document.getElementById('searchTrigger');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.querySelector('.search-input');
+        
+        searchTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchOverlay.classList.add('active');
+            searchInput.focus();
+        });
+        
+        searchClose.addEventListener('click', () => {
+            searchOverlay.classList.remove('active');
+        });
+        
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                searchOverlay.classList.remove('active');
             }
         });
         
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}s`;
-                    entry.target.classList.add('fade-in');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Dropdown hover delay
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            let timeout;
+            
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                const dropdown = item.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.style.transition = 'all 0.3s ease';
                 }
             });
-        }, {
-            threshold: 0.1
-        });
-        
-        fadeElements.forEach((el, index) => {
-            el.dataset.delay = index * 0.1;
-            observer.observe(el);
-        });
-        
-        // Newsletter form
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input[type="email"]').value;
-            alert(`Thank you for subscribing with ${email}! You'll receive 10% off your first order.`);
-            newsletterForm.reset();
-        });
-        
-        // Add to Cart buttons
-        document.querySelectorAll('.btn-primary').forEach(btn => {
-            if (btn.textContent.includes('Shop') || btn.textContent.includes('View')) return;
             
-            btn.addEventListener('click', function() {
-                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
-                const originalText = this.textContent;
-                
-                this.textContent = 'Added to Cart!';
-                this.style.background = '#4CAF50';
-                
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.style.background = '';
-                }, 2000);
-                
-                // In Shopify, you would add actual cart logic here
+            item.addEventListener('mouseleave', () => {
+                const dropdown = item.querySelector('.dropdown');
+                if (dropdown) {
+                    timeout = setTimeout(() => {
+                        dropdown.style.transition = 'all 0.2s ease';
+                    }, 300);
+                }
             });
         });
     </script>
